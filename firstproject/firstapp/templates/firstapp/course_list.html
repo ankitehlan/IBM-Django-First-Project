@@ -1,0 +1,21 @@
+{% if course_list %}
+    <ul>
+    {% for course in course_list %}
+        <div>
+            <img src="{{ MEDIA_URL }}/{{ course.image }}" width="60" height="60" >
+            <h1><b>{{ course.name }}</b></h1>
+            <p>{{course.total_enrollment}} enrolled</p>
+            <p>{{ course.description }}</p>
+            <form action="{% url 'enroll' course.id%}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Enroll">
+            </form>
+            <form action="{% url 'course_detail' course.id%}" method="GET">
+                <input type="submit" value="Details">
+            </form>
+        </div>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>No courses are available.</p>
+{% endif %}

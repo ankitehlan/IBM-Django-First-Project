@@ -5,10 +5,10 @@ from .models import Course, Instructor, Lesson
 # Register your models here.
 class LessonInline(admin.StackedInline):
     model = Lesson
-    extra = 3
+    extra = 1
     
 class CourseAdmin(admin.ModelAdmin):
-    fields = ['name', 'description']
+    fields = ['name', 'description', 'total_enrollment']
     inlines = [LessonInline]
 
 admin.site.register(Course, CourseAdmin)

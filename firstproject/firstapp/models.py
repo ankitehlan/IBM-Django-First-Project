@@ -55,6 +55,7 @@ class Learner(User):
 class Course(models.Model):
     name = models.CharField(null=False, max_length=100, default='online course')
     description = models.CharField(max_length=500)
+    total_enrollment = models.IntegerField(default=0)
     # Many-To-Many relationship with Instructor
     instructors = models.ManyToManyField(Instructor)
     learner = models.ManyToManyField(Learner, through='Enrollment')
@@ -90,4 +91,3 @@ class Enrollment(models.Model):
         choices=COURSE_MODES,
         default=AUDIT
     )
-    
