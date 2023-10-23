@@ -3,12 +3,15 @@ from django.utils.timezone import now
 
 # Define your first model from here:
 class User(models.Model):
+    username = models.CharField(null=False, max_length=16, default='admin')
+    password = models.CharField(null=False, max_length=16, default='admin')
     # CharField for user's first name
     first_name = models.CharField(null=False, max_length=30, default='john')
     # CharField for user's last name
     last_name = models.CharField(null=False, max_length=30, default='doe')
     # CharField for user's date for birth
     dob = models.DateField(null=True)
+
 
     def __str__(self) -> str:
         return self.first_name + " " + self.last_name
