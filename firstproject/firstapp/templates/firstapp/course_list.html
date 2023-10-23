@@ -13,6 +13,9 @@
             <form action="{% url 'course_detail' course.id%}" method="GET">
                 <input type="submit" value="Details">
             </form>
+            <form action="{% url 'generic_course_detail' course.id%}" method="GET">
+                <input type="submit" value="Generic details">
+            </form>
         </div>
     {% endfor %}
     </ul>
